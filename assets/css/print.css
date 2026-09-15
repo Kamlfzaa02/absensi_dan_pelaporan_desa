@@ -1,0 +1,76 @@
+/* =====================================================
+   print.css
+   Khusus untuk mode cetak logbook, meniru format resmi KKN.
+   Di-load HANYA di halaman cetak_logbook.php / laporan admin.
+   ===================================================== */
+
+.print-sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 20mm 20mm 15mm 25mm; /* atas kanan bawah kiri, mirip dokumen resmi */
+    background: #fff;
+    font-family: 'Times New Roman', Times, serif;
+    color: #000;
+    font-size: 12pt;
+}
+
+.print-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.print-header h1 { font-size: 14pt; font-weight: 700; margin: 0; text-transform: uppercase; }
+.print-header h2 { font-size: 13pt; font-weight: 700; margin: 0; }
+.print-header h3 { font-size: 13pt; font-weight: 700; margin: 0; text-transform: uppercase; }
+
+.print-identitas { margin-bottom: 16px; }
+.print-identitas table { border-collapse: collapse; }
+.print-identitas td { padding: 2px 6px; vertical-align: top; }
+.print-identitas td.label { width: 150px; font-weight: 600; }
+.print-identitas td.colon { width: 15px; }
+
+.print-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+.print-table th, .print-table td {
+    border: 1px solid #000;
+    padding: 6px 8px;
+    font-size: 11pt;
+    vertical-align: top;
+}
+.print-table th { text-align: center; font-weight: 700; background: #fff; }
+.print-table td.center { text-align: center; }
+
+.print-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    page-break-inside: avoid;
+}
+.print-footer .sign-block { text-align: center; width: 45%; }
+.print-footer .sign-space { height: 70px; }
+
+.print-date {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.page-break { page-break-before: always; }
+
+@media print {
+    body * { visibility: hidden; }
+    .print-area, .print-area * { visibility: visible; }
+    .print-area {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+    .no-print { display: none !important; }
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+}
